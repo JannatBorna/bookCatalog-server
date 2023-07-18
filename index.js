@@ -26,6 +26,7 @@ async function run() {
     console.log('connected to database')
     const database = client.db('book-catalog');
     const productCollection = database.collection('product');
+    const bookCollection = database.collection('book');
 
 
 // products load
