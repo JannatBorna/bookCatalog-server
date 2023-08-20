@@ -3,12 +3,15 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { default: Post } = require('./db/post');
 const ObjectId = require('mongodb').ObjectId;
 
 const port = process.env.PORT || 2000;
 
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.zoj9s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 console.log(uri)
@@ -26,7 +29,7 @@ async function run() {
     console.log('connected to database')
     const database = client.db('book-catalog');
     const productCollection = database.collection('product');
-    const bookCollection = database.collection('book');
+    // const bookCollection = database.collection('book');
 
 
 // products load
